@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Menu{% endblock %}
+
+{% block body %}
+    <h1>Menu - Créer un nouvel élément</h1>
+
+    <p class="text-right"><a class="btn btn-info" href="{{ path('menu.index') }}">Retour à la liste</a></p>
+
+    {{ include('menu/_form.html.twig', {'button_label': 'Créer'})}}
+{% endblock %}

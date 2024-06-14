@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Créer une information{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle information</h1>
+
+    <p class="text-right"><a class="btn btn-info" href="{{ path('information.index') }}">Retour à la liste</a></p>
+
+    {{ include('information/_form.html.twig', {'button_label': 'Créer'}) }}
+
+{% endblock %}
