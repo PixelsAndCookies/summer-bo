@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Newsroom{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle news</h1>
+
+    <p class="text-right"><a class="btn btn-info" href="{{ path('menu.index') }}">Retour à la liste</a></p>
+
+    {{ include('menu/_form.html.twig',  {'button_label': 'Créer'}) }}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Description{% endblock %}
+
+{% block body %}
+    <h1>Modifier la description</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ include('description/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+{% endblock %}

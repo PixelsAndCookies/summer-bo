@@ -1,0 +1,17 @@
+<header>
+    <nav class="bg-primary">
+        <ul>
+            <li><a href="{{path('home.index')}}">Accueil</a></li>
+            <li><a href="{{path('user.index')}}">Liste des utilisateurs</a></li>
+            <li><a href="{{path('menu.index')}}">Admin du menu</a></li>
+            <li><a href="{{path('news.index')}}">Newsroom</a></li>
+            <li><a href="{{path('description.edit', {'id': 1})}}">Description</a></li>
+            <li><a href="{{path('information.index')}}">Informations</a></li>
+            {# <li><a href="{{path('articles.index')}}">Gestion des articles</a></li>
+            Bibliothèque de photos #}
+        </ul>
+        <ul>
+            <li ><a href="{{path('security.logout')}}">Se déconnecter</a></li>
+        </ul>
+    </nav>
+</header>

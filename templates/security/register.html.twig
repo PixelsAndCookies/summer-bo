@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Inscription{% endblock %}
+
+{% block body %}
+    <div class="container login mt-5">
+        <h1>Inscription</h1>
+
+        {{ form_errors(form) }}
+        {{ form(form) }}
+    </div>
+{% endblock %}

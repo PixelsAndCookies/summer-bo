@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu index{% endblock %}
+
+{% block body %}
+    <h1>Menu</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Lien</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for menu in menus %}
+            <tr>
+                <td>{{ menu.name }}</td>
+                <td>{{ menu.link }}</td>
+                <td>
+                    <a href="{{ path('menu.edit', {'id': menu.id}) }}"><i class="fa-solid fa-pen"></i></a>
+                    <a href="{{ path('menu.delete', {'id': menu.id}) }}"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun élément</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('menu.new') }}">Créer un nouvel élément</a>
+{% endblock %}

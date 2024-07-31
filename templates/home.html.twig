@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pixels &amp; Cookies - backoffice{% endblock %}
+{% block body %}
+
+<div class="container">
+    <h1>Backoffice Pixels & Cookies</h1>
+    {% if app.user %}
+    <h3 class="text-info">Bienvenue {{app.user.name}}</h3>
+    {% else %}
+    <h3 class="text-info">Accès interdit</h3>
+    <a href="{{path('security.login')}}" class="btn btn-primary">Se connecter</a>
+    <a href="{{path('security.register')}}" class="btn btn-primary">Créer un compte</a>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Newsroom{% endblock %}
+
+{% block body %}
+    <h1>Newsroom</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for news in news %}
+            <tr>
+                <td>{{ news.id }}</td>
+                <td>{{ news.title }}</td>
+                <td>{{ news.content }}</td>
+                <td>
+                    <a href="{{ path('news.edit', {'id': news.id}) }}"><i class="fa-solid fa-pen"></i></a>
+                    <a href="{{ path('news.delete', {'id': news.id}) }}"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune news.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('news.new') }}">Créer une news</a>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Informations{% endblock %}
+
+{% block body %}
+    <h1>Informations</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Texte</th>
+                <th>Lien</th>
+                <th>Icone</th>
+                <th>Bulle info</th>
+                <th>Position</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for information in information %}
+            <tr>
+                <td>{{ information.name }}</td>
+                <td>{{ information.text }}</td>
+                <td>{{ information.link }}</td>
+                <td>{{ information.icon }}</td>
+                <td>{{ information.info }}</td>
+                <td>{{ information.position }}</td>
+                <td>
+                    <a href="{{ path('information.edit', {'id': information.id}) }}"><i class="fa-solid fa-pen"></i></a>
+                    <a href="{{ path('information.delete', {'id': information.id}) }}"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun élément enregistré.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('information.new') }}">Nouveau</a>
+{% endblock %}

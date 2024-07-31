@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Newsroom{% endblock %}
+
+{% block body %}
+    <h1>Newsrooms - Modifier</h1>
+
+    <p class="text-right"><a class="btn btn-info" href="{{ path('menu.index') }}">Retour à la liste</a></p>
+
+    {{ include('news/_form.html.twig', {'button_label': 'Modifier'}) }}
+{% endblock %}
