@@ -2,11 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\InformationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use App\Repository\InformationRepository;
 
 #[ORM\Entity(repositoryClass: InformationRepository::class)]
+#[ApiResource(
+    operations:[
+        new GetCollection()
+    ] 
+)]
 class Information
 {
     #[ORM\Id]

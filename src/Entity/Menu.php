@@ -2,8 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\MenuRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MenuRepository;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+
+#[ApiResource(
+    operations:[
+        new GetCollection()
+    ]  
+)]
 
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
 class Menu

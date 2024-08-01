@@ -2,9 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\NewsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NewsRepository;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
 
+#[ApiResource(
+    operations:[
+        new GetCollection()
+    ] 
+)]
 #[ORM\Entity(repositoryClass: NewsRepository::class)]
 class News
 {

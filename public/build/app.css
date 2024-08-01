@@ -1,0 +1,44 @@
+/*!**************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[1].use[1]!./assets/styles/app.css ***!
+  \**************************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ecf0f1;
+  display: flex;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  height: 100vh;
+}
+header nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  height: inherit;
+  padding: 1rem;
+  color: #94ffeb;
+}
+header nav ul {
+  list-style-type: none;
+}
+header nav ul li {
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+main {
+  width: 100%;
+  padding: 2rem;
+}/*# sourceMappingURL=app.css.map */
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmNzcyIsIm1hcHBpbmdzIjoiOzs7QUFBQTtFQUNJO0VBQ0E7QUNDSjs7QURHQTtFQUNJO0VBQ0E7QUNBSjs7QURHQTtFQUNJO0VBQ0E7QUNBSjs7QURHQTtFQUNJO0FDQUo7QURFSTtFQUNJO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FDQVI7QURFUTtFQUNJO0FDQVo7QURFWTtFQUNJO0VBQ0E7QUNBaEI7O0FETUE7RUFDSTtFQUNBO0FDSEosb0MiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hc3NldHMvc3R5bGVzL2FwcC5zY3NzIiwid2VicGFjazovLy8uL2Fzc2V0cy9zdHlsZXMvYXBwLmNzcyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==*/

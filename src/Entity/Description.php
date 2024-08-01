@@ -2,13 +2,21 @@
 
 namespace App\Entity;
 
-use App\Repository\DescriptionRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use App\Repository\DescriptionRepository;
 
+#[ApiResource(
+    operations:[
+        new GetCollection()
+    ]  
+)]
 #[ORM\Entity(repositoryClass: DescriptionRepository::class)]
 class Description
 {
+   
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
