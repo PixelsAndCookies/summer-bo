@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Description;
+use App\Entity\Presentation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\TextEditorType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
-class DescriptionType extends AbstractType
+class PresentationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -55,7 +55,7 @@ class DescriptionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Description::class,
+            'data_class' => Presentation::class,
         ]);
     }
 }

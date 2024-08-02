@@ -6,15 +6,17 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
-use App\Repository\DescriptionRepository;
+use App\Repository\PresentationRepository;
 
 #[ApiResource(
     operations:[
-        new GetCollection()
+        new GetCollection(
+            uriTemplate: '/presentation'
+        )
     ]  
 )]
-#[ORM\Entity(repositoryClass: DescriptionRepository::class)]
-class Description
+#[ORM\Entity(repositoryClass: PresentationRepository::class)]
+class Presentation
 {
    
     #[ORM\Id]

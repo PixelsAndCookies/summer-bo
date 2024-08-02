@@ -8,12 +8,14 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
 use App\Repository\InformationRepository;
 
-#[ORM\Entity(repositoryClass: InformationRepository::class)]
 #[ApiResource(
     operations:[
-        new GetCollection()
+        new GetCollection(
+            uriTemplate: '/informations'
+        )
     ] 
 )]
+#[ORM\Entity(repositoryClass: InformationRepository::class)]
 class Information
 {
     #[ORM\Id]

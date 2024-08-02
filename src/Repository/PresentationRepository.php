@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Description;
+use App\Entity\Presentation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Description>
+ * @extends ServiceEntityRepository<Presentation>
  */
-class DescriptionRepository extends ServiceEntityRepository
+class PresentationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Description::class);
+        parent::__construct($registry, Presentation::class);
     }
 
     //    /**
-    //     * @return Description[] Returns an array of Description objects
+    //     * @return Presentation[] Returns an array of Presentation objects
     //     */
     //    public function findByExampleField($value): array
     //    {
@@ -31,7 +31,7 @@ class DescriptionRepository extends ServiceEntityRepository
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Description
+    //    public function findOneBySomeField($value): ?Presentation
     //    {
     //        return $this->createQueryBuilder('d')
     //            ->andWhere('d.exampleField = :val')
