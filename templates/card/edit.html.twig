@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition{% endblock %}
+
+{% block body %}
+    <h1>Edition</h1>
+
+   <p class="text-right"><a class="btn btn-info" href="{{ path('card.index') }}">Retour à la liste</a></p>
+    {{ include('card/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+{% endblock %}

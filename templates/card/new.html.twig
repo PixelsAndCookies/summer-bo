@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Card{% endblock %}
+
+{% block body %}
+    <h1>Card - Créer un nouvel élément</h1>
+
+    <p class="text-right"><a class="btn btn-info" href="{{ path('card.index') }}">Retour à la liste</a></p>
+
+    {{ include('card/_form.html.twig', {'button_label': 'Créer'})}}
+{% endblock %}

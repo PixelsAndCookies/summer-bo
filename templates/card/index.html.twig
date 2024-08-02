@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cartes index{% endblock %}
+
+{% block body %}
+    <h1>Cartes</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-4">
+            {{ message }}
+        </div>
+    {% endfor %}
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Lien</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for card in cards %}
+            <tr>
+                <td>{{ card.name }}</td>
+                <td>{{ card.link }}</td>
+                <td>
+                    <a href="{{ path('card.edit', {'id': card.id}) }}"><i class="fa-solid fa-pen"></i></a>
+                    <a href="{{ path('card.delete', {'id': card.id}) }}"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun élément</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('card.new') }}">Créer un nouvel élément</a>
+{% endblock %}
