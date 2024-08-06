@@ -36,4 +36,8 @@ header nav ul li {
 main {
   width: 100%;
   padding: 2rem;
+}
+main .form-group .btn-group label.btn-outline-primary {
+  border-radius: 0.37rem !important;
+  margin: 0 0.5rem;
 }/*# sourceMappingURL=app.css.map */

@@ -40,4 +40,12 @@ header{
 main{
     width:100%;
     padding:2rem;
+
+    .form-group{
+        .btn-group label.btn-outline-primary{
+            border-radius: .37rem !important;
+            margin:0 .5rem ;
+        }
+    }
 }
+
