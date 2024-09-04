@@ -8,7 +8,7 @@
     <a class="btn btn-primary" href="{{ path('picture.new') }}">Ajouter une nouvelle photo.</a>
 
     <div class="content">
-    {% for picture in pictures %}
+    {% for picture in pagination %}
         <figure>
             <div><img src="/imgs/{{ picture.filename }}" alt="{{picture.alt}}"></div>
             <figcaption>
@@ -22,13 +22,17 @@
             
                 <div><span>Alt :</span> {{picture.alt}}</div>
             </figcaption>
-        </figure>        
+        </figure>      
+         
     {% else %}
         <tr>
             <td colspan="5">La galerie est vide pour l'instant.</td>
         </tr>
     {% endfor %}
     </div>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div> 
 
 
 {% endblock %}

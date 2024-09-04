@@ -7,10 +7,10 @@ use App\Entity\Picture;
 use App\Form\PictureType;
 use App\Repository\PictureRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -19,10 +19,16 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class PictureController extends AbstractController
 {
     #[Route('/', name: 'picture.index', methods: ['GET'])]
-    public function index(PictureRepository $pictureRepository): Response
+    public function index(PictureRepository $pictureRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $pagination = $paginator->paginate(
+            $pictureRepository->findOrderedByDate(),
+            $request->query->getInt('page', 1),
+            10
+        );
         return $this->render('picture/index.html.twig', [
-            'pictures' => $pictureRepository->findOrderedByDate(),
+            // 'pictures' => $pictureRepository->findOrderedByDate(),
+            'pagination' => $pagination
         ]);
     }
 

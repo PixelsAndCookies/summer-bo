@@ -52,6 +52,9 @@
             "./config/packages/fos_ckeditor.yaml"
         ]
     },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v6.5.0"
+    },
     "nelmio/cors-bundle": {
         "version": "2.5",
         "recipe": {
