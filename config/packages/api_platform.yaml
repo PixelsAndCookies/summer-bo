@@ -4,9 +4,9 @@ api_platform:
         paths: ['%kernel.project_dir%/src/Entity']
     version: 1.0.0
     formats:
-        jsonld: ['application/ld+json']
+        json: ['application/json']
     docs_formats:
-        jsonld: ['application/ld+json']
+        json: ['application/json']
         jsonopenapi: ['application/vnd.openapi+json']
         html: ['text/html']
     defaults:
@@ -16,8 +16,9 @@ api_platform:
         extra_properties:
             standard_put: true
             rfc_7807_compliant_errors: true
+        pagination_enabled: false
     collection:
         pagination:
-            enabled: false
+            enabled_parameter_name: pagination
     keep_legacy_inflector: false
     use_symfony_listeners: true
