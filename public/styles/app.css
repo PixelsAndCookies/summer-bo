@@ -19,6 +19,9 @@ a {
 
 header {
   height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 header nav {
   display: flex;
@@ -81,26 +84,39 @@ main .fa-solid {
 main .content {
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 main .content figure {
-  display: inline-block;
-  padding: 1rem;
-  margin-bottom: 4rem;
-  width: 20rem;
-  height: 20rem;
+  position: relative;
+  display: flex;
+  margin: 2rem 1rem;
+  width: 100%;
   vertical-align: top;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-content: stretch;
+  align-items: baseline;
 }
-main .content figure > div {
-  width: 100%;
-  height: 100%;
+main .content figure::after {
+  content: "";
+  display: block;
+  padding-bottom: 150%;
 }
-main .content figure > div img {
+main .content figure > img {
+  position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 5rem);
   -o-object-fit: cover;
      object-fit: cover;
 }
 main .content figure figcaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   text-align: justify;
   font-size: 0.8rem;
   height: 5rem;
@@ -117,4 +133,25 @@ main .content figure figcaption div span {
 }
 main .content figure figcaption div p {
   margin: 0;
+}
+
+@media screen and (min-width: 680px) {
+  main .content figure {
+    width: 43%;
+  }
+}
+@media screen and (min-width: 1080px) {
+  main .content figure {
+    width: 29%;
+  }
+}
+@media screen and (min-width: 1080px) {
+  main .content figure {
+    width: 22%;
+  }
+}
+@media screen and (min-width: 1960px) {
+  main .content figure {
+    width: 15%;
+  }
 }/*# sourceMappingURL=app.css.map */

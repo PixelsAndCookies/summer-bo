@@ -10,7 +10,7 @@
     <div class="content">
     {% for picture in pagination %}
         <figure>
-            <div><img src="/imgs/{{ picture.filename }}" alt="{{picture.alt}}"></div>
+            <img src="/imgs/{{ picture.filename }}" alt="{{picture.alt}}">
             <figcaption>
                 <div>
                     <p><span>Date :</span> {{ picture.date ? picture.date|date('Y-m-d') : '' }}</p>

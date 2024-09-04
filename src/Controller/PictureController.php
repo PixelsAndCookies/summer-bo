@@ -24,7 +24,7 @@ class PictureController extends AbstractController
         $pagination = $paginator->paginate(
             $pictureRepository->findOrderedByDate(),
             $request->query->getInt('page', 1),
-            10
+            12
         );
         return $this->render('picture/index.html.twig', [
             // 'pictures' => $pictureRepository->findOrderedByDate(),

@@ -1,3 +1,6 @@
+$base-color: #2c3e50;
+$second-color: #94f3c3;
+
 *{
     margin:0;
     padding:0;
@@ -20,6 +23,9 @@ a{
 
 header{
     height:100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
 
     nav{
         display:flex;
@@ -51,14 +57,14 @@ header{
 
     .page, .current, .previous, .next, .last, .first{
         padding: 1rem;
-        background-color:#2c3e50;
-        color:#94f3c3;
+        background-color:$base-color;
+        color:$second-color;
         font-weight: 400;
         font-size: 1rem;
     }
     .current{
-        background-color:#94f3c3;
-        color:#2c3e50;
+        background-color:$second-color;
+        color:$base-color;
         font-weight:800;
     }
 }
@@ -79,11 +85,12 @@ main{
 
         button{ 
             border:none;
-            background:none;}
+            background:none;
+        }
     }
 
     .fa-solid{
-        color: #94f3c3;
+        color: $second-color;
         font-size:1rem;
         padding:0.1rem;
     }
@@ -91,30 +98,46 @@ main{
     .content{
         width:100%;
         text-align:center;
-        
-        figure{
-            display:inline-block;
-            padding:1rem;
-            margin-bottom: 4rem;
-            width:20rem;
-            height:20rem;
-            vertical-align: top;
-            & > div{
-                width:100%; height:100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
 
-                img{
-                    width:100%; height:100%;
-                    object-fit:cover;
-                }
+        figure{
+            position:relative;
+            display:flex;
+            margin: 2rem 1rem;
+            width:100%;
+            vertical-align: top;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: center;
+            align-content: stretch;
+            align-items: baseline;
+            
+            &::after{
+                content:'';
+                display:block;
+                padding-bottom: 150%;
+            }
+
+            & > img{
+                position:absolute;
+                width:100%; 
+                height:calc(100% - 5rem);
+                object-fit:cover;
             }
             
             figcaption{
+                position:absolute;
+                bottom:0;
+                width:100%;
                 text-align:justify;
                 font-size:0.8rem;
                 height:5rem;
-                background-color: #2c3e50;
+                background-color: $base-color;
                 padding: 1rem;
-                color: #94f3c3;
+                color: $second-color;
 
                 div{
                     &:first-of-type{
@@ -126,16 +149,36 @@ main{
                     }
                     p{
                         margin:0;
-                        
-                    }
-                   
-                }
-                
-                
-                
+                    }   
+                } 
             }
         }
 
     }
 }
 
+
+@media screen and (min-width:680px){
+    main .content figure{
+        width:43%;
+    
+    }
+}
+
+@media screen and (min-width:1080px){
+    main .content figure{
+        width:29%;
+    }
+}
+
+@media screen and (min-width:1080px){
+    main .content figure{
+        width:22%;
+    }
+}
+
+@media screen and (min-width:1960px){
+    main .content figure{
+        width:15%;
+    }
+}
