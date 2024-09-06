@@ -11,11 +11,13 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/picture')]
+#[IsGranted('ROLE_USER')]
 class PictureController extends AbstractController
 {
     #[Route('/', name: 'picture.index', methods: ['GET'])]
@@ -27,7 +29,6 @@ class PictureController extends AbstractController
             12
         );
         return $this->render('picture/index.html.twig', [
-            // 'pictures' => $pictureRepository->findOrderedByDate(),
             'pagination' => $pagination
         ]);
     }

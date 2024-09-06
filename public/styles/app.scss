@@ -21,6 +21,12 @@ a{
     text-decoration: none;
 }
 
+.fa-solid{
+    color: $base-color;
+    font-size:1rem;
+    padding:0.1rem;
+}
+
 header{
     height:100vh;
     position: sticky;
@@ -89,12 +95,6 @@ main{
         }
     }
 
-    .fa-solid{
-        color: $second-color;
-        font-size:1rem;
-        padding:0.1rem;
-    }
-
     .content{
         width:100%;
         text-align:center;
@@ -119,6 +119,10 @@ main{
                 content:'';
                 display:block;
                 padding-bottom: 150%;
+            }
+
+            .fa-solid{
+                color: $second-color;
             }
 
             & > img{
@@ -156,7 +160,6 @@ main{
 
     }
 }
-
 
 @media screen and (min-width:680px){
     main .content figure{
