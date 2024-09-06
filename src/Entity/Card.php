@@ -2,19 +2,18 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use App\Repository\MenuRepository;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
+use App\Repository\CardRepository;
+use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Entity(repositoryClass: CardRepository::class)]
 #[ApiResource(
     operations:[
         new GetCollection()
-    ]  
+    ] 
 )]
-
-#[ORM\Entity(repositoryClass: MenuRepository::class)]
-class Menu
+class Card
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -25,7 +24,13 @@ class Menu
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $cover = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $link = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $info = null;
 
     public function getId(): ?int
     {
@@ -44,6 +49,18 @@ class Menu
         return $this;
     }
 
+    public function getCover(): ?string
+    {
+        return $this->cover;
+    }
+
+    public function setCover(string $cover): static
+    {
+        $this->cover = $cover;
+
+        return $this;
+    }
+
     public function getLink(): ?string
     {
         return $this->link;
@@ -52,6 +69,18 @@ class Menu
     public function setLink(string $link): static
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function getInfo(): ?string
+    {
+        return $this->info;
+    }
+
+    public function setInfo(?string $info): static
+    {
+        $this->info = $info;
 
         return $this;
     }

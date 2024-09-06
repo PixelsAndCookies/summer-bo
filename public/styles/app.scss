@@ -1,3 +1,6 @@
+$base-color: #2c3e50;
+$second-color: #94f3c3;
+
 *{
     margin:0;
     padding:0;
@@ -9,13 +12,26 @@ body{
     display:flex;
 }
 
+img{
+    max-width:100%;
+}
+
 a{
     color:inherit;
     text-decoration: none;
 }
 
+.fa-solid{
+    color: $base-color;
+    font-size:1rem;
+    padding:0.1rem;
+}
+
 header{
     height:100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
 
     nav{
         display:flex;
@@ -37,7 +53,135 @@ header{
     }
 }
 
+.navigation .pagination{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    .page, .current, .previous, .next, .last, .first{
+        padding: 1rem;
+        background-color:$base-color;
+        color:$second-color;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+    .current{
+        background-color:$second-color;
+        color:$base-color;
+        font-weight:800;
+    }
+}
+
 main{
     width:100%;
     padding:2rem;
+
+    .form-group{
+        .btn-group label.btn-outline-primary{
+            border-radius: .37rem !important;
+            margin:0 .5rem ;
+        }
+    }
+
+    .delete_action{
+        display:inline;
+
+        button{ 
+            border:none;
+            background:none;
+        }
+    }
+
+    .content{
+        width:100%;
+        text-align:center;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        figure{
+            position:relative;
+            display:flex;
+            margin: 2rem 1rem;
+            width:100%;
+            vertical-align: top;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            justify-content: center;
+            align-content: stretch;
+            align-items: baseline;
+            
+            &::after{
+                content:'';
+                display:block;
+                padding-bottom: 150%;
+            }
+
+            .fa-solid{
+                color: $second-color;
+            }
+
+            & > img{
+                position:absolute;
+                width:100%; 
+                height:calc(100% - 5rem);
+                object-fit:cover;
+            }
+            
+            figcaption{
+                position:absolute;
+                bottom:0;
+                width:100%;
+                text-align:justify;
+                font-size:0.8rem;
+                height:5rem;
+                background-color: $base-color;
+                padding: 1rem;
+                color: $second-color;
+
+                div{
+                    &:first-of-type{
+                        display:flex;
+                        justify-content: space-between;
+                    }
+                    span{
+                        font-weight:600;
+                    }
+                    p{
+                        margin:0;
+                    }   
+                } 
+            }
+        }
+
+    }
+}
+
+@media screen and (min-width:680px){
+    main .content figure{
+        width:43%;
+    
+    }
+}
+
+@media screen and (min-width:1080px){
+    main .content figure{
+        width:29%;
+    }
+}
+
+@media screen and (min-width:1080px){
+    main .content figure{
+        width:22%;
+    }
+}
+
+@media screen and (min-width:1960px){
+    main .content figure{
+        width:15%;
+    }
 }

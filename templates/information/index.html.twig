@@ -20,6 +20,7 @@
                 <th>Icone</th>
                 <th>Bulle info</th>
                 <th>Position</th>
+                <th>Statut</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
                 <td>{{ information.icon }}</td>
                 <td>{{ information.info }}</td>
                 <td>{{ information.position }}</td>
+                <td>{% if information.status == true %}<span class='badge bg-success'>En ligne</span>{% else %}<span class='badge bg-danger'>Hors ligne</span>{% endif %}</td>
                 <td>
                     <a href="{{ path('information.edit', {'id': information.id}) }}"><i class="fa-solid fa-pen"></i></a>
                     <a href="{{ path('information.delete', {'id': information.id}) }}"><i class="fa-solid fa-trash"></i></a>

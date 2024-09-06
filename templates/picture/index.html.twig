@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Galerie photos{% endblock %}
+
+{% block body %}
+    <h1>Galerie photos</h1>
+
+    <a class="btn btn-primary" href="{{ path('picture.new') }}">Ajouter une nouvelle photo.</a>
+
+    <div class="content">
+    {% for picture in pagination %}
+        <figure>
+            <img src="/imgs/{{ picture.filename }}" alt="{{picture.alt}}">
+            <figcaption>
+                <div>
+                    <p><span>Date :</span> {{ picture.date ? picture.date|date('Y-m-d') : '' }}</p>
+                    <div class="icones">
+                        <a href="{{ path('picture.edit', {'id': picture.id}) }}"><i class="fa-solid fa-pen"></i></a>
+                        {{ include('picture/_delete_form.html.twig') }}
+                    </div>
+                </div>
+            
+                <div><span>Alt :</span> {{picture.alt}}</div>
+            </figcaption>
+        </figure>      
+         
+    {% else %}
+        <tr>
+            <td colspan="5">La galerie est vide pour l'instant.</td>
+        </tr>
+    {% endfor %}
+    </div>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div> 
+
+
+{% endblock %}

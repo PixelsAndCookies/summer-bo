@@ -2,10 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\InformationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use App\Repository\InformationRepository;
 
+#[ApiResource(
+    operations:[
+        new GetCollection(
+            uriTemplate: '/informations'
+        )
+    ] 
+)]
 #[ORM\Entity(repositoryClass: InformationRepository::class)]
 class Information
 {
@@ -31,6 +40,9 @@ class Information
 
     #[ORM\Column(nullable: true)]
     private ?int $position = null;
+
+    #[ORM\Column]
+    private ?bool $status = null;
 
     public function getId(): ?int
     {
@@ -105,6 +117,18 @@ class Information
     public function setPosition(?int $position): static
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

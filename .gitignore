@@ -1,10 +1,12 @@
-
 ###> symfony/framework-bundle ###
 /.env.local
+/.env.test
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
+/public/img/
+/public/imgs/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
@@ -23,3 +25,4 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+node_modules

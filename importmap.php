@@ -16,13 +16,10 @@ return [
         'path' => '/js/app.js',
         'entrypoint' => true,
     ],
-    '@hotwired/stimulus' => [
-        'version' => '3.2.2',
+    'assets' => [
+        'version' => '3.0.1',
     ],
-    '@symfony/stimulus-bundle' => [
-        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
-    ],
-    '@hotwired/turbo' => [
-        'version' => '7.3.0',
+    'lodash/extend' => [
+        'version' => '4.17.21',
     ],
 ];

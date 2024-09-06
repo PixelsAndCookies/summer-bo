@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Summer - Description{% endblock %}
+{% block title %}Summer - Présentation{% endblock %}
 
 {% block body %}
-    <h1>Modifier la description</h1>
+    <h1>Modifier la présentation</h1>
 
     {% for message in app.flashes('success') %}
         <div class="alert alert-success mt-4">
             {{ message }}
         </div>
     {% endfor %}
-    {{ include('description/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ include('presentation/_form.html.twig', {'button_label': 'Modifier'}) }}
 
 {% endblock %}

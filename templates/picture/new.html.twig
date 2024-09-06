@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Summer - Ajouter une photo{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une photo</h1>
+
+    <p class="text-right"><a class="btn btn-info" href="{{ path('picture.index') }}">Retour à la liste</a></p>
+    
+    {{ include('picture/_form.html.twig') }}
+{% endblock %}

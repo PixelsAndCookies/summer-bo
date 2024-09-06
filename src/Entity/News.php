@@ -2,9 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\NewsRepository;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\NewsRepository;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
 
+#[ApiResource(
+    operations:[
+        new GetCollection()
+    ]
+),
+ApiFilter(SearchFilter::class, properties: ['status' => 'exact'])]
 #[ORM\Entity(repositoryClass: NewsRepository::class)]
 class News
 {
@@ -18,6 +28,9 @@ class News
 
     #[ORM\Column(length: 255)]
     private ?string $content = null;
+
+    #[ORM\Column]
+    private ?bool $status = null;
 
     public function getId(): ?int
     {
@@ -44,6 +57,18 @@ class News
     public function setContent(string $content): static
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }
