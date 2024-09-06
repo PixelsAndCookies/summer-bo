@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Day index{% endblock %}
+
+{% block body %}
+    <h1>Day index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id_day</th>
+                <th>Template_day</th>
+                <th>Title_day</th>
+                <th>Date_day</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for day in days %}
+            <tr>
+                <td>{{ day.id }}</td>
+                <td>{{ day.idDay }}</td>
+                <td>{{ day.templateDay }}</td>
+                <td>{{ day.titleDay }}</td>
+                <td>{{ day.dateDay ? day.dateDay|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('day.show', {'id': day.id}) }}">show</a>
+                    <a href="{{ path('day.edit', {'id': day.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('day.new') }}">Create new</a>
+{% endblock %}
