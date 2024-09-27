@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Day;
 use App\Form\DayType;
+use App\Entity\Content;
+use App\Entity\DayPicture;
 use App\Repository\DayRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/day')]
 final class DayController extends AbstractController
@@ -23,10 +25,64 @@ final class DayController extends AbstractController
     }
 
     #[Route('/new', name: 'day.new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, ?int $template = 1): Response
     {
         $day = new Day();
+
+        switch($template){
+            case 1 :
+                $nbContents = 2;
+                $nbPictures = 7;
+                break;
+            case 2 :
+                $nbContents = 2;
+                $nbPictures = 6;
+                break;
+            case 3 :
+                $nbContents = 3;
+                $nbPictures = 6;
+                break;
+            case 4 :
+                $nbContents = 4;
+                $nbPictures = 9;
+                break;
+            case 5 :
+                $nbContents = 1;
+                $nbPictures = 11;
+                break;
+            case 6 :
+                $nbContents = 3;
+                $nbPictures = 8;
+                break;
+            case 7 :
+                $nbContents = 4;
+                $nbPictures = 5;
+                break;
+            case 8 :
+                $nbContents = 3;
+                $nbPictures = 10;
+                break;
+            case 9 :
+                $nbContents = 2;
+                $nbPictures = 7;
+                break;
+            case 10 :
+                $nbContents = 2;
+                $nbPictures = 6;
+                break;
+            default:
+                $nbContents = 1;
+                $nbPictures = 1;
+                break;
+        }
+
+        for($i = 0; $i < $nbContents; $i++){
+            $day->addContent(new Content());
+        }
+
+
         $form = $this->createForm(DayType::class, $day);
+ 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -71,7 +127,7 @@ final class DayController extends AbstractController
     #[Route('/{id}', name: 'day.delete', methods: ['POST'])]
     public function delete(Request $request, Day $day, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$day->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$day->getIdDay(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($day);
             $entityManager->flush();
         }

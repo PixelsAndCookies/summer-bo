@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
 use App\Repository\CardRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CardRepository::class)]
@@ -31,6 +33,17 @@ class Card
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $info = null;
+
+    /**
+     * @var Collection<int, Day>
+     */
+    #[ORM\OneToMany(targetEntity: Day::class, mappedBy: 'id_card')]
+    private Collection $days;
+
+    public function __construct()
+    {
+        $this->days = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -81,6 +94,36 @@ class Card
     public function setInfo(?string $info): static
     {
         $this->info = $info;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Day>
+     */
+    public function getDays(): Collection
+    {
+        return $this->days;
+    }
+
+    public function addDay(Day $day): static
+    {
+        if (!$this->days->contains($day)) {
+            $this->days->add($day);
+            $day->setIdCard($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDay(Day $day): static
+    {
+        if ($this->days->removeElement($day)) {
+            // set the owning side to null (unless already changed)
+            if ($day->getIdCard() === $this) {
+                $day->setIdCard(null);
+            }
+        }
 
         return $this;
     }

@@ -139,6 +139,35 @@ main .content figure figcaption div p {
   margin: 0;
 }
 
+.modal#picturesLibrary .modal-body {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.modal#picturesLibrary .modal-body div.picture {
+  display: flex;
+  display: flex;
+  margin: 1rem;
+  vertical-align: top;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-content: stretch;
+  align-items: baseline;
+  width: 29%;
+}
+.modal#picturesLibrary .modal-body div.picture img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.modal#picturesLibrary .modal-body div.picture img.selected {
+  border: 0.2rem solid #2c3e50;
+}
+
 @media screen and (min-width: 680px) {
   main .content figure {
     width: 43%;

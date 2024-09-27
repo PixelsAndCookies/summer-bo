@@ -1,4 +1,64 @@
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+    <h1>Créer un jour</h1>
+
+    {{ form_row(form.title_day) }}
+
+    <h3>Contenus</h3>
+    {% for contentForm in form.contents %}
+        {{ form_row(contentForm) }}
+    {% endfor %}
+
+    <h3>Images associées</h3>
+
+    {# TODO
+    - Créer une modale dans laquelle toutes les images sont cliquables (multi) 
+    - Lorsqu'on valide la modale, les photos sélectionnées sont affichées dans le formulaire
+    - On récupère l'ordre de sélection des photos
+    #}
+    
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#picturesLibrary">Bibliothèque d'images</button>
+
+<!-- Modal -->
+<div class="modal modal-xl fade" id="picturesLibrary" tabindex="-1" aria-labelledby="picturesLibrary" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="picturesLibrary">Bibliothèque</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {% for picture in form.dayPictures %}
+        <div class="picture">
+            <input type="checkbox" id="{{ picture.vars.id }}" name="{{ picture.vars.label }}" value="{{ picture.vars.value }}" {{ picture.vars.checked ? 'checked' : '' }} style="display: none;">
+            <label for="{{ picture.vars.id }}">
+                <img src="{{ asset('imgs/' ~ picture.vars.label) }}" alt="{{ picture.vars.label }}" class="selectable-image" data-id="{{ picture.vars.id }}" >
+            </label>
+        </div>
+    {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.selectable-image');
+
+        images.forEach(image => {
+            image.addEventListener('click', function() {
+                const checkbox = document.getElementById(image.getAttribute('data-id'));
+                checkbox.checked = !checkbox.checked;
+                image.classList.toggle('selected');
+            });
+        });
+    });
+</script>

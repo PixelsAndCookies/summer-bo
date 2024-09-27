@@ -42,6 +42,9 @@ class Day
     #[ORM\ManyToMany(targetEntity: DayPicture::class, mappedBy: 'id_day')]
     private Collection $dayPictures;
 
+    #[ORM\ManyToOne(inversedBy: 'days')]
+    private ?Card $id_card = null;
+
     public function __construct()
     {
         $this->contents = new ArrayCollection();
@@ -154,6 +157,18 @@ class Day
         if ($this->dayPictures->removeElement($dayPicture)) {
             $dayPicture->removeIdDay($this);
         }
+
+        return $this;
+    }
+
+    public function getIdCard(): ?Card
+    {
+        return $this->id_card;
+    }
+
+    public function setIdCard(?Card $id_card): static
+    {
+        $this->id_card = $id_card;
 
         return $this;
     }
